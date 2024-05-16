@@ -16,6 +16,12 @@ export default class DcdProductAdd extends Component {
             [name]:value
         })
       }
+      dcdHandleSubmit =(ev)=>{
+        ev.preventDEfault();
+
+        this.props.onSubmit(this.state);
+        
+      }
       render() {
         return (
           <div>
@@ -58,7 +64,7 @@ export default class DcdProductAdd extends Component {
                 onChange={this.dcdhandleChange}
                 />
                 </div>
-              <button className='btn btn-success'>Ghi Lại</button>
+              <button className='btn btn-success' on click={this.dcdHandleSubmit}>Ghi Lại</button>
             </form>
           </div>
         )
