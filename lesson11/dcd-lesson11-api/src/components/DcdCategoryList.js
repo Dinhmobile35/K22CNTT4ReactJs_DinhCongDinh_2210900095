@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function DcdCategoryList({ renderDcdCategories, onAddNew }) {
+export default function DcdCategoryList({ renderDcdCategories, onAddNew,onDcdDelete,onDcdEdit}) {
   let dcdCategoryElement = renderDcdCategories.map((dcdCategory, index) => {
     return (
       <tr key={index}>
@@ -10,13 +10,34 @@ export default function DcdCategoryList({ renderDcdCategories, onAddNew }) {
         <td>
           {dcdCategory.dcdCategoryStatus === true ? "Hiển thị" : "Tạm khóa"}
         </td>
-        <td>Edit | Del</td>
+        <td>
+          <button className="btn btn-danger" onClick={()=>dcdHandleDelete(dcdCategory.dcdId)}>
+            Delete
+            </button>
+            <button className="btn btn-success" onClick={()=>dcdHandleEdit(dcdCategory)}>
+            Edit</button>
+        </td>
       </tr>
     );
   })
   const dcdHandleAdd = ()=> {
     onAddNew(true);
   }
+  //hàm xử lý sự kiện xóa
+const dcdHandleDelete = (dcdId)=>{
+  
+  if(window.confirm('bạn có thực sự muốn xóa Category có mã['+dcdId+']không?')){
+  console.log("Delete:" ,dcdId);
+  onDcdDelete(dcdId)
+}else{
+
+  }
+  
+}
+//Xử lý sự kiện nút sửa
+const dcdHandleEdit = (dcdCategory)=>{
+  onDcdEdit(dcdCategory);
+}
   return (
     <div className="container m-2">
       <h2>DANH SÁCH LOẠI SẢN PHẨM</h2>

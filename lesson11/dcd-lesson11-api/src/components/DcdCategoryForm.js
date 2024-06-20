@@ -1,9 +1,15 @@
-import React, { useState } from "react";
+import React, { useState,useEffect } from "react";
 import axios from "../api/DcdApi";
 
-export default function DcdCategoryForm({ onCloseForm, onDcdCategorySubmit }) {
+export default function DcdCategoryForm({ onCloseForm, onDcdCategorySubmit,renderDcdCategory }) {
+  const [dcdId,setDcdId]=   useState("0");
   const [dcdCategoryName, setDcdCategoryName] = useState("");
-  const [dcdCategoryStatus, setDcdCategoryStatus] = useState("");
+  const [dcdCategoryStatus, setDcdCategoryStatus] = useState("true");
+  useEffect(()=>{
+    setDcdId(renderDcdCategory.dcdId)
+    setDcdCategoryName(renderDcdCategory.dcdCategoryName)
+    setDcdCategoryStatus(renderDcdCategory.dcdCategoryStatus)
+  })
   const dcdHandleClose = (event) => {
     event.preventDefault();
     onCloseForm(false);
