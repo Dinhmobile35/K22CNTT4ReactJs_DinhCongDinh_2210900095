@@ -66,7 +66,7 @@ const dcdHandleEdit =(dcdCategory)=>{
       <hr />
       {
         dcdCategoryIsForm === true? <DcdCategoryForm 
-                            renderDcdCategory ={dcdCategoryEdit}
+                            cd ={dcdCategoryEdit}
                             onCloseForm = {dcdHandleCloseForm}
                             onDcdCategorySubmit = {dcdHandleCategorySubmit}
 
